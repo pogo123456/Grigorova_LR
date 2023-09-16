@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <string>
 
 using namespace std;
 
@@ -16,8 +15,22 @@ struct pipe
 	{
 		cout << "Please, enter pipe length(km)" << endl;
 		cin >> len;
+		while (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Try again";
+			cin >> len;
+		}
 		cout << "Please, enter pipe diameter(mm)" << endl;
 		cin >> diam;
+		while (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Try again";
+			cin >> diam;
+		}
 		cout << "Please, enter kilometer mark" << endl;
 		cin >> km_mark;
 		cout << "Please, enter pipe inrepair? (1-yes, 0-no)" << endl;
@@ -52,8 +65,22 @@ struct station
 		cin >> title;
 		cout << "Please, enter number of workshops" << endl;
 		cin >> workshop;
+		while (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Try again";
+			cin >> workshop;
+		}
 		cout << "Please, enter number of active workshops" << endl;
 		cin >> active_workshop;
+		while (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(1000, '\n');
+			cout << "Try again";
+			cin >> active_workshop;
+		}
 		cout << "Please, enter effectiveness" << endl;
 		cin >> efficiency;
 	}
@@ -118,51 +145,60 @@ int main()
 			pipe pipe;
 			pipe.InputPipe();
 			pipes.push_back(pipe);
-			break;
+			//break;
+			cin >> choice;
 		}
 		case 2:
 		{
 			station station;
 			station.InputStation();
 			stations.push_back(station);
-			break;
+			//break;
+			cin >> choice;
 		}
-		/*case 3:
-		{
-			cout << "List of pipes: " << endl;
-			for (const pipe& pipe : pipes)
-			{
-				pipe.OutputPipe();
-				cout << endl;
-			}
-			for (const station & station : stations)
-			{
-				station.OutputStation();
-				cout << endl;
-			}
-			break;
-		}*/
+		//case 3:
+		//{
+		//	cout << "List of pipes: " << endl;
+		//	for (const pipe& pipe : pipes)
+		//	{
+		//		pipe.OutputPipe();
+		//		cout << endl;
+		//	}
+		//	for (const station & station : stations)
+		//	{
+		//		station.OutputStation();
+		//		cout << endl;
+		//	}
+		//	//break;
+		//	cin >> choice;
+		//}
 		case 4:
 		{
-			break;
+			//break;
+			cin >> choice;
 		}
 		case 5:
 		{
-			break;
+			//break;
+			cin >> choice;
 		}
 		case 6:
 		{
-			break;
+			//break;
+			cin >> choice;
 		}
 		case 7:
 		{
-			break;
+			//break;
+			cin >> choice;
 		}
 		case 0:
 			return 0;
+			break;
 		default:
 			cout << "Error!!! Try again." << endl;
-			break;
+			//break;
+			cin >> choice;
 		}
 	}
 	
